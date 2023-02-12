@@ -40,9 +40,9 @@ const amplifyHostingStack = new AmplifyHostingStack(
 		// When creating the token scope on Github, only the admin:repo_hook scope is needed
 		githubOauthTokenName: 'github-token',
 		// swap for your github username
-		owner: 'focusotter',
+		owner: 'MarkiyanPyts',
 		// swap for your github frontend repo
-		repository: 'simple-nextjs',
+		repository: 'demo-amplify-tailwind',
 		//pass in any envVars from the above stacks here
 		environmentVariables: {
 			USERPOOL_ID: authStack.userpool.userPoolId,
