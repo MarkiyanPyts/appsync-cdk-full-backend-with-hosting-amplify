@@ -45,8 +45,10 @@ const amplifyHostingStack = new AmplifyHostingStack(
 		repository: 'demo-amplify-tailwind',
 		//pass in any envVars from the above stacks here
 		environmentVariables: {
-			USERPOOL_ID: authStack.userpool.userPoolId,
-			GRAPHQL_URL: apiStack.graphqlURL,
+			NEXT_PUBLIC_USERPOOL_ID: authStack.userpool.userPoolId,
+			NEXT_PUBLIC_USERPOOL_CLIENT_ID: authStack.userPoolClient.userPoolClientId,
+			NEXT_PUBLIC_GRAPHQL_URL: apiStack.graphqlURL,
+			NEXT_PUBLIC_AWS_REGION: cdk.Aws.REGION,
 		},
 	}
 )
