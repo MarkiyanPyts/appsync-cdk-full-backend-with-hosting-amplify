@@ -30,11 +30,12 @@ interface APIStackProps extends StackProps {
 
 export class APIStack extends Stack {
 	public readonly graphqlURL: string
+	public readonly graphqlName: string
 	constructor(scope: Construct, id: string, props: APIStackProps) {
 		super(scope, id, props)
-
-		const api = new GraphqlApi(this, 'APISamples', {
-			name: 'APISamples',
+		const apiName = 'APISamples'
+		const api = new GraphqlApi(this, apiName, {
+			name: apiName,
 			schema: SchemaFile.fromAsset(
 				path.join(__dirname, 'graphql/schema.graphql')
 			),
@@ -136,7 +137,7 @@ export class APIStack extends Stack {
 			runtime: FunctionRuntime.JS_1_0_0,
 			pipelineConfig: [listProductsFunction],
 		})
-
+		this.graphqlName = apiName
 		this.graphqlURL = api.graphqlUrl
 		new CfnOutput(this, 'GraphQLAPIURL', {
 			value: api.graphqlUrl,

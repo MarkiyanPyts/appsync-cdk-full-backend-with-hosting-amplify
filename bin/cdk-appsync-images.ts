@@ -48,6 +48,7 @@ const amplifyHostingStack = new AmplifyHostingStack(
 			NEXT_PUBLIC_USERPOOL_ID: authStack.userpool.userPoolId,
 			NEXT_PUBLIC_USERPOOL_CLIENT_ID: authStack.userPoolClient.userPoolClientId,
 			NEXT_PUBLIC_GRAPHQL_URL: apiStack.graphqlURL,
+			NEXT_PUBLIC_GRAPHQL_NAME: apiStack.graphqlName,
 			NEXT_PUBLIC_AWS_REGION: cdk.Aws.REGION,
 		},
 	}

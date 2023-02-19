@@ -17,12 +17,13 @@ export class IdentityStack extends Stack {
 	public readonly identityPool: IdentityPool
 	public readonly authenticatedRole: IRole
 	public readonly unauthenticatedRole: IRole
+	public readonly identortyPoolName: string
 
 	constructor(scope: Construct, id: string, props: IdentityStackProps) {
 		super(scope, id, props)
-
-		const identityPool = new IdentityPool(this, `ProductIdentityPool`, {
-			identityPoolName: `ProductIdentityPool`,
+		const identityPoolName = 'ProductIdentityPool'
+		const identityPool = new IdentityPool(this, identityPoolName, {
+			identityPoolName: identityPoolName,
 			allowUnauthenticatedIdentities: true,
 			authenticationProviders: {
 				userPools: [
@@ -37,6 +38,7 @@ export class IdentityStack extends Stack {
 		this.authenticatedRole = identityPool.authenticatedRole
 		this.unauthenticatedRole = identityPool.unauthenticatedRole
 		this.identityPool = identityPool
+		this.identortyPoolName = identityPoolName
 		this.identityPoolId = new CfnOutput(this, 'IdentityPoolId', {
 			value: identityPool.identityPoolId,
 		})
